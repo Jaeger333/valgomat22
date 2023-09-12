@@ -34,7 +34,7 @@ let partyScores = {
 const questionT = document.getElementById('question')
 const btnNext = document.getElementById('btnNext')
 const rbAnswer = document.getElementsByName('answer')
-const resultT = document.getElementById('result')
+const inputForm = document.getElementById('valgomatForm')
 
 btnNext.addEventListener('click', nextQuestion)
 
@@ -48,12 +48,16 @@ function nextQuestion() {
         calculateResult(qidx, radioChecked.value)
         qidx++
         if (qidx < questions.length) {
-            questionT.innerHTML = questions[qidx].question
+            
             radioChecked.checked = false
+            questionT.innerHTML = questions[qidx].question
+            
         }
         else { 
-            //
+            inputForm.style.display = 'none'
+            showResult()
         }
+        
     }
 
 }
@@ -64,28 +68,33 @@ function calculateResult(qidx, chosen) {
     let partyChoices = questions[qidx][chosen]
     console.log(partyChoices)
 
-    for (let party in partyChoices) {
+    for (let party in partyChoices){
         partyScores[party] += partyChoices[party]
     }
     console.log(partyScores)
+}
 
+function showResult() {
+    let sorted = new Map()
+    const resultBox = document.getElementById("result")
 
-    let highestParty = '';
-    let highestValue = -Infinity; // Start with a very low value
-    let secHighestParty = '';
-    let secHighestValue = -Infinity
+    while (sorted.size < Object.keys(partyScores).length ) {
+        let max = null
 
-    for (let party in partyScores) {
-        if (partyScores[party] > highestValue) {
-            secHighestParty = highestParty
-            secHighestValue = highestValue
-            highestValue = partyScores[party];
-            highestParty = party;
+        for (party in partyScores) {
+            if (max ===null && !sorted.has(party)) {
+                max = party
+            }
+            else if(partyScores[party] > partyScores[max] && !sorted.has(party)) {
+                max = party
+            }
         }
+        sorted.set(max, partyScores[max])
     }
 
-    console.log("The party with the highest value is:", highestParty);
-    console.log("The highest value is:", highestValue);
-    console.log("The party with the second highest value is:", secHighestParty);
-    console.log("The second highest value is:", secHighestValue);
+
+    sorted.forEach((score, party) => {
+        resultBox.innerHTML += (party + ": " + score + " ")
+    });
+
 }
