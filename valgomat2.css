@@ -54,6 +54,7 @@ ul {
   }
   
 li {
+    list-style-type: none;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center 20%; 
