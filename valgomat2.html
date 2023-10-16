@@ -5,24 +5,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enkel Valgomat</title>
+    <title>Episk Valgomat</title>
     <link rel="stylesheet" href="valgomat2.css">
     
 </head>
 
 <body>
-    <h1>Enkel Valgomat</h1>
-    <form id="valgomatForm">
-        <h2 id = "question"></h2>
-        <input type="radio" name="answer"  value="heltUenig"> Helt uenig
-        <input type="radio" name="answer"  value="littUenig"> Litt uenig
-        <input type="radio" name="answer"  value="littEnig"> Litt enig
-        <input type="radio" name="answer"  value="heltEnig"> Helt enig
+    <header>
+        <h1>ASVG Valgomat 2023</h1>
+    </header>
 
-        <button id = "btnNext" type="button">Neste</button>
-    </form>
-    <h2>Ditt resultat:</h2>
-    <p id="result"></p>
+    <div id="main-container">
+
+        <div id="start">
+            <div class="startMsg">
+                <h2>Klikk her for å starte</h2>
+                <button id="startButton">Start test</button>
+            </div>
+        </div>
+        
+        <div id="test">
+            <h2 id = "question"></h2>
+            <form id="valgomatForm">
+                
+                <button id = "btnBack" type="button">Tilbake</button>
+
+                <label>
+                    <input type="radio" name="answer" value="heltUenig"> Helt uenig
+                </label>
+                <label>
+                    <input type="radio" name="answer" value="littUenig"> Litt uenig
+                </label>
+                <label>
+                    <input type="radio" name="answer" value="littEnig"> Litt enig
+                </label>
+                <label>
+                    <input type="radio" name="answer" value="heltEnig"> Helt enig
+                </label>
+                
+                <button id = "btnNext" type="button">Neste</button>
+            </form>
+        
+            <div id="progress-container">
+                <div class="progress-bar" id="progress">0%</div>
+            </div>
+        </div>
+    
+        <div id="result-container">
+            <h2>Ditt resultat:</h2>
+            <ul id="result"></ul>
+        </div>
+    </div>
+    
 
     <script defer src="valgomat2.js"></script>
 </body>
