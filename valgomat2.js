@@ -153,16 +153,16 @@ btnNext.addEventListener('click', nextQuestion)
 btnBack.addEventListener('click', prevQuestion)
 
 
-// Add an event listener to each radio button
+// Legger til en event listener to hver radio button
 document.querySelectorAll('input[type="radio"]').forEach(function(radio) {
     radio.addEventListener('change', function() {
-        // Reset background color for all labels
+        // Resetter bakgrunnsfargen for alle labels/svaralternativene
         document.querySelectorAll('label').forEach(function(label) {
             label.style.backgroundColor = 'white';
             label.style.color = 'black';
         });
 
-        // Change background color for the selected label
+        // Resetter bakgrunnsfargen for det valgte alternativet
         if (this.checked) {
             this.parentNode.style.backgroundColor = 'black';
             this.parentNode.style.color = 'white';
@@ -201,7 +201,7 @@ function nextQuestion() {
             
         }
         else { 
-            inputForm.style.display = 'none'
+            test.style.display = 'none'
             updateProgressBar();
             showResult()
         }

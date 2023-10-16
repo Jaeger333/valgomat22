@@ -5,6 +5,8 @@ body {
     margin: 10%;
 }
 
+/*Div*/
+
 #start {
     display: block;
 }
@@ -17,6 +19,7 @@ body {
     display: none;
 }
 
+/*Svar alternativer*/
 
 input[type="radio"] {
     display: none;
